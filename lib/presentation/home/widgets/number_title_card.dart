@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:netfix_clone/core/constants.dart';
 import 'package:netfix_clone/presentation/home/widgets/number_card.dart';
 import 'package:netfix_clone/presentation/widgets/main_title.dart';
 
 class NumberTitleCard extends StatelessWidget {
+  final List movieList;
   const NumberTitleCard({
     Key? key,
+    required this.movieList,
   }) : super(key: key);
 
   @override
@@ -21,6 +24,8 @@ class NumberTitleCard extends StatelessWidget {
                     10,
                     (index) => NumberCard(
                           index: index,
+                          imageUrl:
+                              '$imageAppendUrl${movieList[index].backdropPath}',
                         ))))
       ],
     );

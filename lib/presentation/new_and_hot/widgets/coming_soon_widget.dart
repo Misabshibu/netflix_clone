@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:netfix_clone/core/colors/colors.dart';
+import 'package:netfix_clone/core/colors.dart';
 import 'package:netfix_clone/core/constants.dart';
 import 'package:netfix_clone/presentation/home/widgets/custom_button_widget.dart';
 import 'package:netfix_clone/presentation/widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String movieDescriptioin;
+
   const ComingSoonWidget({
     Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.movieDescriptioin,
   }) : super(key: key);
 
   @override
@@ -20,17 +33,17 @@ class ComingSoonWidget extends StatelessWidget {
           height: 450,
           width: 50,
           child: Column(
-            children: const [
+            children: [
               Text(
-                'FEB',
-                style: TextStyle(
+                month,
+                style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: kgreycolor),
               ),
               Text(
-                '11',
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                     letterSpacing: 4,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
@@ -44,12 +57,14 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(),
+              VideoWidget(
+                url: posterPath,
+              ),
               Row(
                 children: [
-                  const Text(
-                    'Tall Girl2',
-                    style: TextStyle(
+                  Text(
+                    movieName,
+                    style: const TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
                         letterSpacing: -2),
@@ -79,14 +94,17 @@ class ComingSoonWidget extends StatelessWidget {
                     fontSize: 16,
                   )),
               kheigh,
-              const Text(
-                'Tall Girl 2',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                movieName,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               kheigh,
-              const Text(
-                'Leading the lead in the school musical is a dream come true for Jodi,Until the pressure sends her confidence - and her relationship - into a tailspain.',
-                style: TextStyle(color: kgreycolor),
+              Text(
+                movieDescriptioin,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 6,
+                style: const TextStyle(color: kgreycolor),
               )
             ],
           ),

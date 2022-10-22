@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:netfix_clone/core/colors/colors.dart';
+import 'package:netfix_clone/core/colors.dart';
 import 'package:netfix_clone/core/constants.dart';
 import 'package:netfix_clone/presentation/home/widgets/custom_button_widget.dart';
 import 'package:netfix_clone/presentation/widgets/video_widget.dart';
 
 class EveryoneWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String movieDescriptioin;
   const EveryoneWatchingWidget({
     Key? key,
+    required this.posterPath,
+    required this.movieName,
+    required this.movieDescriptioin,
   }) : super(key: key);
 
   @override
@@ -15,17 +21,21 @@ class EveryoneWatchingWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kheigh,
-        const Text(
-          'Friends',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        Text(
+          movieName,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         kheigh,
-        const Text(
-          'this hit sitcon follos the merry misadvantages of six 20-something pals as they navigate the pitfalls of work, life and love in 1990s Manhattan ',
-          style: TextStyle(color: kgreycolor),
+        Text(
+          movieDescriptioin,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 6,
+          style: const TextStyle(color: kgreycolor),
         ),
         kheigh50,
-        const VideoWidget(),
+        VideoWidget(
+          url: posterPath,
+        ),
         kheigh,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

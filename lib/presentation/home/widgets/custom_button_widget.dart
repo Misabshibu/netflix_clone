@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netfix_clone/core/colors/colors.dart';
+import 'package:netfix_clone/core/colors.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   final String title;

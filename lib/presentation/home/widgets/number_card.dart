@@ -1,12 +1,16 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:netfix_clone/core/colors/colors.dart';
+import 'package:netfix_clone/core/colors.dart';
 import 'package:netfix_clone/core/constants.dart';
-import 'package:netfix_clone/presentation/search/widgets/search_idle.dart';
 
 class NumberCard extends StatelessWidget {
   final int index;
-  const NumberCard({super.key, required this.index});
+  final String imageUrl;
+  const NumberCard({
+    super.key,
+    required this.index,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +27,8 @@ class NumberCard extends StatelessWidget {
                 width: 120,
                 height: 170,
                 decoration: BoxDecoration(
-                    image: const DecorationImage(
-                        image: NetworkImage(imageurl), fit: BoxFit.cover),
+                    image: DecorationImage(
+                        image: NetworkImage(imageUrl), fit: BoxFit.cover),
                     borderRadius: kradious),
               ),
             ],

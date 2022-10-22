@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:netfix_clone/core/colors/colors.dart';
-import 'package:netfix_clone/core/constants.dart';
+import 'package:netfix_clone/core/colors.dart';
 import 'package:netfix_clone/presentation/home/widgets/custom_button_widget.dart';
 
 class BackgrounCard extends StatelessWidget {
-  const BackgrounCard({
-    Key? key,
-  }) : super(key: key);
+  final imageUrl;
+  const BackgrounCard({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +13,9 @@ class BackgrounCard extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(kimage), fit: BoxFit.cover)),
+                  image: NetworkImage(imageUrl), fit: BoxFit.cover)),
         ),
         Positioned(
           left: 0,

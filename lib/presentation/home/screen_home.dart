@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netfix_clone/application/hot_and_new/hot_and_new_bloc.dart';
 import 'package:netfix_clone/core/constants.dart';
 import 'package:netfix_clone/presentation/home/widgets/background_card.dart';
 import 'package:netfix_clone/presentation/home/widgets/number_title_card.dart';
@@ -12,6 +14,7 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<HotAndNewBloc>(context).add(const LoadDataInComingsopm());
     return Scaffold(
         body: SafeArea(
             child: ValueListenableBuilder(
@@ -29,17 +32,56 @@ class ScreenHome extends StatelessWidget {
                     },
                     child: Stack(
                       children: [
-                        ListView(
-                          children: const [
-                            BackgrounCard(),
-                            MainTitleAndCard(
-                              title: 'Released in past year',
-                            ),
-                            MainTitleAndCard(title: 'Trending Now'),
-                            NumberTitleCard(),
-                            MainTitleAndCard(title: 'Tense Dramas'),
-                            MainTitleAndCard(title: 'South Indian Cinima')
-                          ],
+                        BlocBuilder<HotAndNewBloc, HotAndNewState>(
+                          builder: (context, state) {
+                            if (state.isLoading) {
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.red,
+                                ),
+                              );
+                            } else if (state.hasError) {
+                              return const Center(
+                                child:
+                                    Text('Error while loading ComingSoon list'),
+                              );
+                            } else if (state.comingSoonList.isEmpty) {
+                              return const Center(
+                                child: Text('ComingSoon list is empty'),
+                              );
+                            } else {
+                              final list = state.comingSoonList;
+                              list.shuffle;
+                              return ListView(
+                                children: [
+                                  BackgrounCard(
+                                    imageUrl:
+                                        '$imageAppendUrl${state.comingSoonList[4].posterPath}',
+                                  ),
+                                  MainTitleAndCard(
+                                    title: 'Released in past year',
+                                    movieList: list,
+                                  ),
+                                  MainTitleAndCard(
+                                    title: 'Trending Now',
+                                    movieList: list,
+                                  ),
+                                  NumberTitleCard(
+                                    movieList: list,
+                                  ),
+                                  MainTitleAndCard(
+                                    title: 'Tense Dramas',
+                                    movieList: list,
+                                  ),
+                                  MainTitleAndCard(
+                                    title: 'South Indian Cinima',
+                                    movieList: list,
+                                  )
+                                ],
+                              );
+                            }
+                          },
                         ),
                         scrollNotifier.value
                             ? AnimatedContainer(
@@ -66,7 +108,11 @@ class ScreenHome extends StatelessWidget {
                                         Container(
                                           width: 30,
                                           height: 30,
-                                          color: Colors.red,
+                                          decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117'),
+                                                  fit: BoxFit.cover)),
                                         ),
                                         kwidth
                                       ],

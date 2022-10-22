@@ -5,7 +5,10 @@ import 'package:netfix_clone/presentation/widgets/main_title.dart';
 
 class MainTitleAndCard extends StatelessWidget {
   final String title;
-  const MainTitleAndCard({Key? key, required this.title}) : super(key: key);
+  final List movieList;
+  const MainTitleAndCard(
+      {Key? key, required this.title, required this.movieList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,12 @@ class MainTitleAndCard extends StatelessWidget {
             maxHeight: 170,
             child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: List.generate(10, (index) => const MainCard())))
+                children: List.generate(
+                    10,
+                    (index) => MainCard(
+                          posterUrl:
+                              '$imageAppendUrl${movieList[index].posterPath}',
+                        ))))
       ],
     );
   }

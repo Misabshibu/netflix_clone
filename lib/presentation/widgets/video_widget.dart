@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:netfix_clone/core/constants.dart';
 
 class VideoWidget extends StatelessWidget {
-  const VideoWidget({
-    Key? key,
-  }) : super(key: key);
+  final String url;
+  const VideoWidget({Key? key, required this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            hotandNewImgage,
+            url,
             fit: BoxFit.cover,
           ),
         ),

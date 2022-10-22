@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netfix_clone/core/colors/colors.dart';
+import 'package:netfix_clone/core/colors.dart';
 import 'package:netfix_clone/presentation/downloads/widgets/screen_downloads.dart';
 import 'package:netfix_clone/presentation/fast_laugh/screen_fast_laugh.dart';
 import 'package:netfix_clone/presentation/home/screen_home.dart';
