@@ -79,14 +79,14 @@ class Sectioin2 extends StatelessWidget {
                           size: Size(size.width * 0.35, size.width * 0.55),
                           angle: 20,
                           imageList:
-                              '$imageAppendUrl${state.downloads![0].posterPath}',
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
                           margin: const EdgeInsets.only(left: 170, top: 50),
                         ),
                         DowloadsImageWidget(
                           size: Size(size.width * 0.35, size.width * 0.55),
                           angle: -20,
                           imageList:
-                              '$imageAppendUrl${state.downloads![1].posterPath}',
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
                           margin: const EdgeInsets.only(right: 170, top: 50),
                         ),
                         DowloadsImageWidget(
@@ -94,7 +94,7 @@ class Sectioin2 extends StatelessWidget {
                           angle: 0,
                           radious: 10,
                           imageList:
-                              '$imageAppendUrl${state.downloads![2].posterPath}',
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
                           margin: const EdgeInsets.only(left: 20, top: 15),
                         )
                       ],

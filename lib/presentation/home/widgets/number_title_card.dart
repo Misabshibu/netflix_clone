@@ -23,9 +23,9 @@ class NumberTitleCard extends StatelessWidget {
                 children: List.generate(
                     10,
                     (index) => NumberCard(
-                          index: index,
+                          index: index + 10,
                           imageUrl:
-                              '$imageAppendUrl${movieList[index].backdropPath}',
+                              '$imageAppendUrl${movieList[index + 10].backdropPath}',
                         ))))
       ],
     );

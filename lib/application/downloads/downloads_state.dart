@@ -4,12 +4,18 @@ part of 'downloads_bloc.dart';
 class DownloadsState with _$DownloadsState {
   const factory DownloadsState(
       {required bool isLoading,
-      required List<Downloads>? downloads,
+      required List<Downloads> downloads,
       required Option<Either<MainFailure, List<Downloads>>>
           downloadFailorSucces}) = _DownloadsState;
 
   factory DownloadsState.inital() {
     return DownloadsState(
-        isLoading: false, downloadFailorSucces: none(), downloads: []);
+        isLoading: false,
+        downloadFailorSucces: none(),
+        downloads: [
+          const Downloads(posterPath: '', title: ''),
+          const Downloads(posterPath: '', title: ''),
+          const Downloads(posterPath: '', title: '')
+        ]);
   }
 }

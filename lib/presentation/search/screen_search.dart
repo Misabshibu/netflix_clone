@@ -21,6 +21,7 @@ class ScreenSearch extends StatelessWidget {
         child: Column(
           children: [
             CupertinoSearchTextField(
+              prefixInsets: const EdgeInsets.all(3),
               backgroundColor: Colors.grey.withOpacity(0.4),
               prefixIcon: const Icon(
                 CupertinoIcons.search,

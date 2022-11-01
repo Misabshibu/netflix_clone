@@ -21,16 +21,22 @@ class EveryoneWatchingWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kheigh,
-        Text(
-          movieName,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            movieName,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         kheigh,
-        Text(
-          movieDescriptioin,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 6,
-          style: const TextStyle(color: kgreycolor),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            movieDescriptioin,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 6,
+            style: const TextStyle(color: kgreycolor),
+          ),
         ),
         kheigh50,
         VideoWidget(

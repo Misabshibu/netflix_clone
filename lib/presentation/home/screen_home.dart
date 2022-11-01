@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netfix_clone/application/hot_and_new/hot_and_new_bloc.dart';
 import 'package:netfix_clone/core/constants.dart';
+import 'package:netfix_clone/domain/hot_and_new/model/hot_and_new.dart';
 import 'package:netfix_clone/presentation/home/widgets/background_card.dart';
 import 'package:netfix_clone/presentation/home/widgets/number_title_card.dart';
 import 'package:netfix_clone/presentation/widgets/main_title_card.dart';
@@ -53,6 +56,7 @@ class ScreenHome extends StatelessWidget {
                             } else {
                               final list = state.comingSoonList;
                               list.shuffle;
+
                               return ListView(
                                 children: [
                                   BackgrounCard(
@@ -60,10 +64,12 @@ class ScreenHome extends StatelessWidget {
                                         '$imageAppendUrl${state.comingSoonList[4].posterPath}',
                                   ),
                                   MainTitleAndCard(
+                                    limitindex: 10,
                                     title: 'Released in past year',
                                     movieList: list,
                                   ),
                                   MainTitleAndCard(
+                                    limitindex: 0,
                                     title: 'Trending Now',
                                     movieList: list,
                                   ),
@@ -71,10 +77,12 @@ class ScreenHome extends StatelessWidget {
                                     movieList: list,
                                   ),
                                   MainTitleAndCard(
+                                    limitindex: 7,
                                     title: 'Tense Dramas',
                                     movieList: list,
                                   ),
                                   MainTitleAndCard(
+                                    limitindex: 0,
                                     title: 'South Indian Cinima',
                                     movieList: list,
                                   )

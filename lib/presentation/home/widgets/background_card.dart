@@ -12,10 +12,37 @@ class BackgrounCard extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 600,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+          height: 520,
+          child: Stack(children: [
+            Image(
+              width: double.infinity,
+              height: double.infinity,
+              image: NetworkImage(
+                imageUrl,
+              ),
+              fit: BoxFit.cover,
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                height: 60,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  Color.fromARGB(0, 118, 86, 86),
+                  Colors.black
+                ])),
+              ),
+            ),
+          ]),
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: NetworkImage(
+          //           imageUrl,
+          //         ),
+          //         fit: BoxFit.cover)),
         ),
         Positioned(
           left: 0,
